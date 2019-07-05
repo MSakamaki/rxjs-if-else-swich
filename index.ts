@@ -18,7 +18,7 @@ const caseWhen =
 merge(
   source.pipe(caseWhen(1, 3, '.')),
   source.pipe(caseWhen(2, 5, '..')),
-  source.pipe(caseWhen(8, 9, '..')),
+  source.pipe(caseWhen(8, 9, '...')),
 ).subscribe(console.log);
 
 
@@ -31,10 +31,10 @@ const mergeWhen = (params:Param[]) => (imput$: Observable<number>): Observable<s
 
 source.pipe(
   mergeWhen([{
-    min: 1, max: 3, result: '|'
+    min: 1, max: 3, result: '-'
   }, {
     min: 6, max: 8, result: '--'
   }, {
-    min: 7, max: 10, result: '/'
+    min: 7, max: 10, result: '---'
   }])
 ).subscribe(console.log);
