@@ -1,7 +1,6 @@
 import { of, from, Observable, merge } from 'rxjs'; 
 import { map, filter, tap, switchMap } from 'rxjs/operators';
 
-
 const source = from([1,2,3,4,5,6,7,8,9,10]);
 
 const caseWhen =
@@ -10,11 +9,11 @@ const caseWhen =
     map(caseFnc)
   );
 merge(
-  source.pipe(caseWhen(1, ()=> '-')),
-  source.pipe(caseWhen(2, ()=> '--')),
-  source.pipe(caseWhen(3, ()=> '---')),
-  source.pipe(caseWhen(4, ()=> '----')),
-  source.pipe(caseWhen(5, ()=> '-----')),
+  source.pipe(caseWhen(1, ()=> '.')),
+  source.pipe(caseWhen(2, ()=> '..')),
+  source.pipe(caseWhen(3, ()=> '...')),
+  source.pipe(caseWhen(4, ()=> '....')),
+  source.pipe(caseWhen(5, ()=> '.....')),
 ).subscribe(console.log);
 
 interface Param {
