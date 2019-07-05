@@ -28,7 +28,6 @@ const mergeWhen = (params:Param[]) => (imput$: Observable<number>): Observable<s
     filter(Boolean),
     map(cs => cs.result)
   );
-
 source.pipe(
   mergeWhen([{
     min: 1, max: 3, result: '-'
@@ -37,4 +36,22 @@ source.pipe(
   }, {
     min: 7, max: 10, result: '---'
   }])
+).subscribe(console.log);
+
+
+const findMap =
+  (find:{ [match: number]: string }) => (imput$: Observable<number>): Observable<string> => imput$.pipe(
+    map((n)=> find[n]),
+    filter(Boolean),
+  )
+source.pipe(
+  findMap({
+    1: 'A',
+    2: 'A',
+    3: 'A',
+    5: 'B',
+    6: 'B',
+    8: 'C',
+    10: 'C',
+  })
 ).subscribe(console.log);
